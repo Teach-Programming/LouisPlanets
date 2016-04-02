@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <title>Awesome Planets from Digital Makers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Awesome Planets</h1>
+      <h2 class="project-tagline">From the boys and girls who code in Digital Makers at the Guild.</h2>
+    </section>
+
+    <section class="main-content">
+
+<svg height="600" width="600">
+  <polygon points="0,0 0,600 600,600 600,0" fill="black" />
+
+  <!-- sun -->
+  <circle id="Sun" cx="300" cy="300" r="50" fill="url(#venus)" />
+
+  <!-- mercury -->
+  <circle id="Mercury" cx="300" cy="230" r="5" fill="url(#mercury)" />
+  <circle cx="300" cy="300" r="70" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <!-- venus -->
+  <circle id="Venus" cx="300" cy="210" r="10" fill="url(#venus)" />
+  <circle cx="300" cy="300" r="90" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <!-- earth -->
+  <circle id="Earth" cx="300" cy="180" r="10" fill="url(#earth)" />
+  <circle cx="300" cy="300" r="120" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <!-- mars -->
+  <circle cx="300" cy="150" r="10" fill="url(#mars)" />
+  <circle cx="300" cy="300" r="150" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <!-- jupiter -->
+  <circle id="jupiter" cx="300" cy="110" r="20" fill="url(#jupiter)" />
+  <circle cx="300" cy="300" r="190" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <!-- saturn -->
+  <circle id="Saturn" cx="300" cy="60" r="15" fill="url(#saturn)" />
+  <circle id="SaturnRing" cx="300" cy="60" r="25" stroke-width="1" stroke="white" fill-opacity="0.0" />
+ <circle cx="300" cy="300" r="240" stroke-width="1" stroke="white" fill-opacity="0.0" />
+
+  <linearGradient id="earth" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00ff00" />
+    <stop offset="100%" stop-color="#0000ff" />
+  </linearGradient>
+
+  <linearGradient id="mercury" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#b0b0b0" />
+    <stop offset="100%" stop-color="#ffffff" />
+  </linearGradient>
+
+  <linearGradient id="venus" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff0000" />
+    <stop offset="100%" stop-color="#fff000" />
+  </linearGradient>
+
+  <linearGradient id="mars" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff0000" />
+    <stop offset="100%" stop-color="#fff00" />
+  </linearGradient>
+
+  <linearGradient id="jupiter" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff0000" />
+    <stop offset="100%" stop-color="#fff00" />
+  </linearGradient>
+
+  <linearGradient id="saturn" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#fdff86" />
+    <stop offset="100%" stop-color="#fff000" />
+  </linearGradient>
+
+  <linearGradient id="sun" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#fff00f" />
+    <stop offset="100%" stop-color="#fff000" />
+  </linearGradient>
+</svg>
+
+<script id="louis-planets">
+var saturn = 0;
+var earth = 0;
+var venus = 0;
+var mercury = 0;
+
+function movePlanets() {
+
+  saturn = saturn + 0.005;
+  earth = earth + 0.04;
+  venus = venus + 0.06;
+  mercury = mercury + 0.02;
+  
+
+  console.log("moving earth " + earth);
+  var earthX = calculateXPosition(earth, 300, 120);
+  var earthY = calculateYPosition(earth, 300, 120);
+  console.log("earth x=" + earthX + " y = " + earthY);
+  
+  var saturnX = calculateXPosition(saturn, 300, 240);
+  var saturnY = calculateYPosition(saturn, 300, 240);
+  console.log("saturn x=" + saturnX + " y = " + saturnY);
+  
+   var SaturnRingX = calculateXPosition(saturn, 300, 240);
+  var SaturnRingY = calculateYPosition(saturn, 300, 240);
+  console.log("saturnring x=" + SaturnRingX + " y = " + SaturnRingY);
+  
+  var VenusX = calculateXPosition(venus, 300, 90);
+  var VenusY = calculateYPosition(venus, 300, 90);
+  console.log("Venus x=" + VenusX + " y = " + VenusY);
+  
+  var MercuryX = calculateXPosition(mercury, 300, 70);
+  var MercuryY = calculateYPosition(mercury, 300, 70);
+  console.log("Mercury x=" + MercuryX + " y = " + MercuryY);
+
+  $("#Earth").attr("cx", earthX);
+$("#Earth").attr("cy", earthY);
+
+ $("#Saturn").attr("cx", saturnX);
+$("#Saturn").attr("cy", saturnY);
+
+ $("#SaturnRing").attr("cx", SaturnRingX);
+$("#SaturnRing").attr("cy", SaturnRingY);
+
+ $("#Venus").attr("cx", VenusX);
+$("#Venus").attr("cy", VenusY);
+
+ $("#Mercury").attr("cx", MercuryX);
+$("#Mercury").attr("cy", MercuryY);
+
+}
+
+function calculateXPosition(degrees, sunX, orbitRadius) {
+  var velocity = degrees * (Math.PI / 180);
+  return sunX + (orbitRadius * Math.cos(velocity));
+}
+
+function calculateYPosition(degrees, sunY, orbitRadius) {
+  var velocity = degrees * (Math.PI / 180);
+  return sunY + (orbitRadius * Math.sin(velocity));
+}
+
+setInterval(movePlanets, 2.5);
+
+    </script>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/JohnReeves/LouisPlanets">Awesome Planets</a> is maintained by <a href="https://github.com/JohnReeves">JohnReeves</a>.</span>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+    </section>
+    
+  </body>
+</html>
